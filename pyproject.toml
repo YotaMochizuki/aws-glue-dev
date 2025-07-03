@@ -1,0 +1,37 @@
+[project]
+name = "aws-glue"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+# 有効にするルールセット
+select = [
+  "E",   # pycodestyle（基本的な構文エラーやインデント違反など）
+  "F",   # pyflakes（未使用変数、未定義変数などの静的解析）
+  "B",   # flake8-bugbear（バグになりやすいコードパターン）
+  "I",   # isort（インポート順を自動チェック・修正）
+  "UP",  # pyupgrade（古い構文を最新のPython構文へ改善）
+  "SIM", # flake8-simplify（冗長な構文の簡素化提案）
+  "C4",  # flake8-comprehensions（内包表記などの書き方改善）
+  "N",   # pep8-naming（関数・クラス・変数などの命名規則）
+  "D",   # pydocstyle（docstring の書式チェック）
+  "PL",  # pylint（静的解析のベストプラクティス、やや厳しめ）
+]
+ignore = ["D100"] # モジュール docstring は強制しない
+
+[tool.ruff.lint.pydocstyle]
+convention = "google" # pycodestyleのスタイルガイドをGoogleスタイルに設定
+
+[tool.ruff.format]
+indent-style = "space"
+line-ending = "lf"
+quote-style = "double"
+docstring-code-format = true
+docstring-code-line-length = 60

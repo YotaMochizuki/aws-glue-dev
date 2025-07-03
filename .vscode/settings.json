@@ -1,0 +1,15 @@
+{
+    "python.defaultInterpreterPath": "/usr/bin/python",
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll.ruff": "explicit",
+            "source.organizeImports.ruff": "explicit"
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true
+    },
+    "autoDocstring.docstringFormat": "google",
+    "editor.formatOnType": true,
+    "editor.formatOnSave": true
+}
