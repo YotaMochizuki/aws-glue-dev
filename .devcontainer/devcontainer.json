@@ -8,7 +8,8 @@
   "workspaceMount": "source=${localWorkspaceFolder},target=/home/hadoop/workspace,type=bind,consistency=cached",
   "mounts": [
     "source=${env:SSH_AUTH_SOCK},target=/ssh-agent,type=bind",
-    "source=${localEnv:HOME}/.ssh,target=/home/hadoop/.ssh,type=bind"
+    "source=${localEnv:HOME}/.ssh,target=/home/hadoop/.ssh,type=bind",
+    "source=${localEnv:HOME}/.aws,target=/home/hadoop/.aws,type=bind"
   ],
   "remoteEnv": {
     "SSH_AUTH_SOCK": "/ssh-agent"
