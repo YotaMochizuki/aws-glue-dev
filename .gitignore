@@ -1,2 +1,7 @@
+# バイトコード・最適化・DLL ファイル
+__pycache__/
+*.py[cod]
+*$py.class
+
 # pytest キャッシュ
 .pytest_cache/
