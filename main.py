@@ -1,3 +1,5 @@
+import os
+
 from awsglue.context import GlueContext
 from pyspark.sql import Row, SparkSession
 
@@ -10,7 +12,7 @@ spark = (
     .config("spark.sql.catalog.s3tablesbucket.io-impl", "org.apache.iceberg.aws.s3.S3FileIO")
     .config(
         "spark.sql.catalog.s3tablesbucket.warehouse",
-        "arn:aws:s3tables:ap-northeast-1:577104691349:bucket/s3tables-test-bucket-mochizuki",
+        os.getenv("S3_TABLES_BUCKET", ""),
     )
     .config("spark.sql.extensions", "org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions")
     .getOrCreate()
