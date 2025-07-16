@@ -1,12 +1,21 @@
 {
     "configurations": [
         {
-            "name": "Python: Run main.py",
+            "name": "Python: Run sample.py",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/sample.py",
             "console": "integratedTerminal",
-            "envFile": "${workspaceFolder}/.env"
-        }
+            "envFile": "${workspaceFolder}/.env_sample"
+        },
+        //下記を追記
+        {
+            "name": "Python: Run main.py", // 構成名（デバッグの選択肢に表示される）
+            "type": "debugpy", // デバッガの種類. Python の場合は debugpy を使用
+            "request": "launch", // 起動方法. launch はローカルでスクリプトを直接起動するモード
+            "program": "${workspaceFolder}/main.py", // デバッグ実行する際のエントリースクリプトファイル
+            "console": "integratedTerminal", // 出力先のターミナル（VSCode統合ターミナルを使用）
+            "envFile": "${workspaceFolder}/.env" // 環境変数をファイル（.env）を指定.
+        },
     ]
 }

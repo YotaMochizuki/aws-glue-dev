@@ -4,11 +4,14 @@ AWS Glue 実験用
 
 ## Githubリポジトリ設定
 
-### SSHキーを作成してGithubにアップロード
+### SSHキーを作成してGitLabにアップロード
+下記コマンドで再生されたキーをGitLabにアップロードする.
 ```bash
-# 生成コマンド
+# 生成コマンド例
 ssh-keygen -t rsa -b 4096 -C "your-email@example.com"
 ```
+
+
 
 ### .bash_profileへ下記を書き込み
 ``` bash
