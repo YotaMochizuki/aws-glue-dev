@@ -2,7 +2,7 @@
 import pytest
 from pyspark.sql import SparkSession
 
-from main import transform  # ファイル名が etl_script.py の場合は適宜変更
+from sample import transform  # ファイル名が etl_script.py の場合は適宜変更
 
 
 @pytest.fixture(scope="session")
