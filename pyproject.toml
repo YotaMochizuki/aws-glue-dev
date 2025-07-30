@@ -7,31 +7,62 @@ requires-python = ">=3.11"
 dependencies = []
 
 [tool.ruff]
-line-length = 120
+# 章3.7: 1行の長さは最大79文字に制限（PEP8準拠）
+line-length = 79
+
+# 章全体: Pythonの想定バージョン（構文チェック対象）
+# ここではプロジェクト要件に基づき 3.11 を指定
 target-version = "py311"
 
+[tool.ruff.format]
+# 章3.2: インデントはスペース4つ（タブ禁止）
+indent-style = "space"
+
+# 章3.6: 改行コードはLF（Unix形式）を使用（CRLF禁止）
+line-ending = "lf"
+
+# 章3.4: 文字列の囲いは原則ダブルクォートを使用（ブラックのデフォルトと逆）
+quote-style = "double"
+
+# 章4.5: docstring 内に含まれるコードブロックも整形対象に含める
+docstring-code-format = true
+
+# 章4.5: docstring 内のコード行長を制限（読みやすさ向上）
+docstring-code-line-length = 60
+
 [tool.ruff.lint]
-# 有効にするルールセット
+# 有効にするルールセット（詳細コメント付き）
 select = [
-  "E",   # pycodestyle（基本的な構文エラーやインデント違反など）
-  "F",   # pyflakes（未使用変数、未定義変数などの静的解析）
-  "B",   # flake8-bugbear（バグになりやすいコードパターン）
-  "I",   # isort（インポート順を自動チェック・修正）
-  "UP",  # pyupgrade（古い構文を最新のPython構文へ改善）
-  "SIM", # flake8-simplify（冗長な構文の簡素化提案）
-  "C4",  # flake8-comprehensions（内包表記などの書き方改善）
-  "N",   # pep8-naming（関数・クラス・変数などの命名規則）
-  "D",   # pydocstyle（docstring の書式チェック）
-  "PL",  # pylint（静的解析のベストプラクティス、やや厳しめ）
+  "E",   # 構文違反（インデント、空白、行末の空白など）章3.5〜3.8, 3.10
+  "W",   # 警告（非推奨な構文、冗長記述）章3.3, 3.9
+  "F",   # 未使用・未定義変数などの検出（バグ防止）章2.2, 2.5
+  "B",   # バグを誘発しやすいパターン検出（flake8-bugbear）
+  "I",   # インポート順序の整理（isort対応）章3.1
+  "UP",  # 古いPython構文を現代的に修正（pyupgrade）
+  "SIM", # 冗長コードの簡素化提案（可読性改善）
+  "C4",  # 内包表記の書き方最適化（処理効率と簡潔さ）
+  "N",   # 命名規則チェック（クラス名はCapWordsなど）章2全般
+  "D",   # docstring の有無・形式・構文チェック（Googleスタイル）章4.5
+  "PL",  # pylintルールの一部（静的解析ベストプラクティス）
+  "ANN", # 関数の引数・戻り値への型ヒント強制（型安全強化）
 ]
-ignore = ["D100"] # モジュール docstring は強制しない
+
+# 無効化するルール（プロジェクトの方針による除外）
+ignore = [
+  "D100", # モジュール冒頭の docstring を必須としない（章4.5 記載なし）
+  "E501", # 行長超過はline-lengthで制御済み（ダブル管理を避ける）
+]
 
 [tool.ruff.lint.pydocstyle]
-convention = "google" # pycodestyleのスタイルガイドをGoogleスタイルに設定
+# 章4.5: Google スタイルの docstring 規約に準拠（短い説明、Args, Returnsなど）
+convention = "google"
 
-[tool.ruff.format]
-indent-style = "space"
-line-ending = "lf"
-quote-style = "double"
-docstring-code-format = true
-docstring-code-line-length = 60
+[tool.mypy]
+# Python の対象バージョン（補完や型チェック整合性のために指定）
+python_version = "3.11"
+
+# 章5.6, 6.1: 厳格な型チェックを有効化（安全性向上）
+strict = true
+
+# 一部の外部パッケージ等に型ヒントがなくても無視（柔軟運用のため）
+ignore_missing_imports = true
